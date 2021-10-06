@@ -2,6 +2,8 @@
 
 
 require_once "Controller/PlayerController.php";
+require_once "Controller/LoginController.php";
+require_once "Controller/RegisterController.php";
  
 
 
@@ -18,22 +20,25 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 $playerController = new PlayerController();
+$loginController = new LoginController();
+$registerController = new RegisterController();
 
-switch ($params[0]) {  
+
+switch ($params[0]) { 
+        case 'login': 
+            $loginController->login(); 
+            break;
+        case 'logout': 
+            $loginController->logout(); 
+            break;
+        case 'verify': 
+            $loginController->verifyLogin(); 
+            break;
         case 'home': 
             $playerController->showHome(); 
             break;
-        case 'createTask': 
-            $taskController->createTask(); 
-            break;
-        case 'deleteTask': 
-            $taskController->deleteTask($params[1]); 
-            break;
-        case 'updateTask': 
-            $taskController->updateTask($params[1]); 
-            break;
-        case 'viewTask': 
-            $taskController->viewTask($params[1]); 
+        case 'register': 
+            $registerController->register(); 
             break;
         default: 
             echo('404 Page not found'); 

@@ -17,4 +17,7 @@ class PlayerView{
         $this->smarty->display('templates/playerList.tpl');
     }
 
+    
+
+
 }
