@@ -5,7 +5,7 @@
     <div>
         <div>
             <h2>Registrarse</h2>
-            <form class="form-alta" action="verify" method="post">
+            <form class="form-alta" action="createUser" method="post">
                 
                 <input placeholder="Nombre" type="text" name="name" id="name" required>
                 <input placeholder="Apellido" type="text" name="surname" id="surname" required>
@@ -17,6 +17,10 @@
         </div>
     </div>
     <h4 class="alert-danger">{$error}</h4>
+
+    <div>
+        <p><a href="login">volver</a></p>
+    </div>
 
     
 

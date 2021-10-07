@@ -15,7 +15,7 @@ class LoginController {
     function logout(){
         session_start();
         session_destroy();
-        $this->view->showLogin("Te deslogueaste!");
+        $this->view->showLogin("Buena suerte!");
     }
 
     function login(){

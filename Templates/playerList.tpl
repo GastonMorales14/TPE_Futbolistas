@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
 
-
+    
 
     <h1>JUGADORES</h1>
 

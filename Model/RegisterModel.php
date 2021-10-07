@@ -12,7 +12,7 @@ class RegisterModel {
 
     function postUser($userName, $userSurname,$userBirthday,$userEmail,$userPassword) {
         $query = $this->db->prepare('INSERT INTO users(name, surname, birthday, email, password) VALUES (?,?,?,?,?)');
-        $query->execute([$userName, $userSurname,$userBirthday,$userEmail,$userPassword]);
+        $query->execute(array($userName, $userSurname,$userBirthday,$userEmail,$userPassword));
     }
 
 }

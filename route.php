@@ -40,6 +40,10 @@ switch ($params[0]) {
         case 'register': 
             $registerController->register(); 
             break;
+        case 'createUser':
+            $registerController->createUser();
+            break;
+
         default: 
             echo('404 Page not found'); 
             break;
