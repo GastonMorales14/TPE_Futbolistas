@@ -19,9 +19,9 @@ class PlayerController{
 
     function showHome(){
         $this->authHelper->checkLoggedIn();
-
+        $role = $this->authHelper->getRole();
         $players = $this->model->getPlayers();
-        $this->view->showPlayers($players);
+        $this->view->showPlayers($players,$role);
 
     }
 
@@ -30,6 +30,14 @@ class PlayerController{
         $this->view->showHomeLocation();
     }
   
+
+    function deletePlayer($id) {
+        $this->authHelper->checkLoggedIn();
+        $this->model->deletePlayerFromDB($id);
+        $this->view->showHomeLocation();
+    }
+
+    
   
             
     

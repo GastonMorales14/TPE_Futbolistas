@@ -31,17 +31,18 @@ class LoginController {
      
             // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($email);
+            $role = $user->role;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
 
                 session_start();
                 $_SESSION['email'] = $email;
-                $_SESSION['role'] = $user->role;
+                $_SESSION['role'] = $role;
                 
 
                 
-                $this->view->showHome($user->role);
+                $this->view->showHome();
             } else {
                 $this->view->showLogin("Acceso denegado");
             }

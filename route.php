@@ -46,6 +46,12 @@ switch ($params[0]) {
         case 'createPlayer':
             $playerController->createPlayer();
             break;
+        case 'deletePlayer':
+            $playerController->deletePlayer($params[1]);
+            break;
+        case 'modifyPlayer':
+            $playerController->modifyPlayer($params[1]);
+            break;
 
 
         default: 

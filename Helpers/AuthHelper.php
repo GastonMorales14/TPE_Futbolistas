@@ -12,6 +12,14 @@ class AuthHelper{
         }
     }
 
+    function getRole() {
+        if(isset($_SESSION['role'])) {
+            $role = $_SESSION['role'];
+            return $role;
+        }
+
+    }
+
 }
 
 

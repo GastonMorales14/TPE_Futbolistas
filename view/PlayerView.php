@@ -10,9 +10,11 @@ class PlayerView{
         $this->smarty = new Smarty();
     }
 
-    function showPlayers($players){
-        $this->smarty->assign('nombre', 'apellido','equipo', 'posicion');        
+    function showPlayers($players,$role){
+                
         $this->smarty->assign('players', $players);
+        $this->smarty->assign('role', $role);
+
         $this->smarty->display('templates/playerList.tpl');
     }
 

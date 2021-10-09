@@ -21,4 +21,10 @@ class PlayerModel{
         $query->execute(array($nombre,$apellido,$equipo, $posicion,$nacionalidad ));
     }
 
+    function deletePlayerFromDB($id) {
+        $query = $this->db->prepare("DELETE FROM jugadores WHERE id_jugador=?");
+        $query->execute(array($id));
+
+    }
+
 }

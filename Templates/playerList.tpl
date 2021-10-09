@@ -9,6 +9,10 @@
                 <th>APELLIDO</th>
                 <th>POSICION</th>
                 <th>EQUIPO</th>
+                {if $role == true}
+                    <th>ELIMINAR</th>
+                    <th>MODIFICAR</th>
+                {/if}
             </tr>
         </thead>
         <tbody>
@@ -18,7 +22,10 @@
                 <td>{$player->apellido}</td>
                 <td>{$player->posicion}</td>
                 <td>{$player->equipo}</td>
-                
+                {if $role == true}
+                    <td><a class="btn" href="deletePlayer/{$player->id_jugador}">Eliminar</a></td>
+                    <td><a class="btn" href="modifyPlayer/{$player->id_jugador}">Modificar</a></td>
+                {/if}
             </tr>
 
             {/foreach}
@@ -28,7 +35,7 @@
     <a href="logout">Logout</a>
 
 
-    {if {$role} }
+    {if $role == true}
     <h2>Cargar jugador</h2>
 
     <form class="form-alta" action="createPlayer" method="post">
