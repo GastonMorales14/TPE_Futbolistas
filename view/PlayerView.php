@@ -13,11 +13,12 @@ class PlayerView{
     function showPlayers($players){
         $this->smarty->assign('nombre', 'apellido','equipo', 'posicion');        
         $this->smarty->assign('players', $players);
-
         $this->smarty->display('templates/playerList.tpl');
     }
 
-    
+    function showHomeLocation(){
+        header("Location: ".BASE_URL."home");
+    }
 
 
 }

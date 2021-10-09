@@ -26,6 +26,8 @@ class LoginController {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
+            
+           
      
             // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($email);
@@ -34,9 +36,12 @@ class LoginController {
             if ($user && password_verify($password, $user->password)) {
 
                 session_start();
-                $_SESSION["email"] = $email;
+                $_SESSION['email'] = $email;
+                $_SESSION['role'] = $user->role;
                 
-                $this->view->showHome();
+
+                
+                $this->view->showHome($user->role);
             } else {
                 $this->view->showLogin("Acceso denegado");
             }

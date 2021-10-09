@@ -43,6 +43,10 @@ switch ($params[0]) {
         case 'createUser':
             $registerController->createUser();
             break;
+        case 'createPlayer':
+            $playerController->createPlayer();
+            break;
+
 
         default: 
             echo('404 Page not found'); 

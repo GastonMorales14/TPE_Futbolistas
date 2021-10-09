@@ -16,4 +16,9 @@ class PlayerModel{
         return $players;
     } 
 
+    function insertPlayer($nombre,$apellido,$equipo,$posicion,$nacionalidad) {
+        $query = $this->db->prepare("INSERT INTO jugadores(nombre, apellido, equipo, posicion, fk_id_nacionalidad) VALUES(?, ?, ?, ?,?)");
+        $query->execute(array($nombre,$apellido,$equipo, $posicion,$nacionalidad ));
+    }
+
 }

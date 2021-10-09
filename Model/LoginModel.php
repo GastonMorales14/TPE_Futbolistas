@@ -13,6 +13,7 @@ class UserModel{
         $query = $this->db->prepare('SELECT * FROM users WHERE email = ?');
         $query->execute([$email]);
         return $query->fetch(PDO::FETCH_OBJ);
+        
     }
 
 
