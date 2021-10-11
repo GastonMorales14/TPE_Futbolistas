@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-
+<body class="fondoPlayerList">
     <h1>JUGADORES</h1>
 
     <table>
@@ -9,9 +9,11 @@
                 <th>APELLIDO</th>
                 <th>POSICION</th>
                 <th>EQUIPO</th>
+                <th>NACIONALIDAD</th>
+                <th>VER</th>
                 {if $role == true}
                     <th>ELIMINAR</th>
-                    <th>MODIFICAR</th>
+                    
                 {/if}
             </tr>
         </thead>
@@ -22,9 +24,14 @@
                 <td>{$player->apellido}</td>
                 <td>{$player->posicion}</td>
                 <td>{$player->equipo}</td>
+                <td>{$player->nacionalidad}</td>
+
+                
+                <td><a class="btn" href="viewPlayer/{$player->id_jugador}">Ver</a></td>
+
                 {if $role == true}
                     <td><a class="btn" href="deletePlayer/{$player->id_jugador}">Eliminar</a></td>
-                    <td><a class="btn" href="modifyPlayer/{$player->id_jugador}">Modificar</a></td>
+                    
                 {/if}
             </tr>
 
@@ -38,7 +45,7 @@
     {if $role == true}
     <h2>Cargar jugador</h2>
 
-    <form class="form-alta" action="createPlayer" method="post">
+    <form class="form-alta" action="createPlayer" method="POST">
                 
         <input placeholder="Nombre" type="text" name="nombre" required>
         <input placeholder="Apellido" type="text" name="apellido" required>
@@ -53,13 +60,6 @@
         <input type="submit" class="btn btn-success" value="Crear">
     </form>
     {/if}
-
-    
-    
-    
-
-
-
 
 
 {include file='templates/footer.tpl'}

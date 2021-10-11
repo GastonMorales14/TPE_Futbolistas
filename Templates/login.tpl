@@ -1,16 +1,28 @@
 {include file='templates/header.tpl'}
-
+<body>
 <div>
 
     <div>
         <div>
             <h2>Log In</h2>
+            
             <form class="form-alta" action="verify" method="post">
-                <input placeholder="email" type="text" name="email" id="email" required>
-                <input placeholder="password" type="password" name="password" id="password" required>
-                <input type="submit" class="btn btn-primary" value="Login">
+                <div class="mb-3">
+                    <input placeholder="email" type="text" name="email" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <input placeholder="password" type="password" name="password" id="password" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-secondary" value="Login">
+                </div>
             </form>
         </div>
+
+       
+
+
+
     </div>
     <h4 class="alert-danger">{$error}</h4>
 

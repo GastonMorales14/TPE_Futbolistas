@@ -22,5 +22,10 @@ class PlayerView{
         header("Location: ".BASE_URL."home");
     }
 
+    function viewPlayer($player,$role){
+        $this->smarty->assign('player', $player);
+        $this->smarty->assign('role', $role);
+        $this->smarty->display('templates/playerDetail.tpl');
+    }
 
 }

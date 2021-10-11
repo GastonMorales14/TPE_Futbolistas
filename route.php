@@ -52,6 +52,9 @@ switch ($params[0]) {
         case 'modifyPlayer':
             $playerController->modifyPlayer($params[1]);
             break;
+        case 'viewPlayer':
+            $playerController->viewPlayer($params[1]);
+            break;
 
 
         default: 

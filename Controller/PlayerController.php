@@ -26,6 +26,7 @@ class PlayerController{
     }
 
     function createPlayer(){
+        $this->authHelper->checkLoggedIn();
         $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['equipo'],$_POST['posicion'],$_POST['fk_id_nacionalidad']);
         $this->view->showHomeLocation();
     }
@@ -35,6 +36,22 @@ class PlayerController{
         $this->authHelper->checkLoggedIn();
         $this->model->deletePlayerFromDB($id);
         $this->view->showHomeLocation();
+    }
+
+    function viewPlayer($id){
+        $this->authHelper->checkLoggedIn();
+        $role = $this->authHelper->getRole();
+        $player = $this->model->getPlayerFromDB($id);
+        $this->view->viewPlayer($player,$role);
+    }
+
+    function modifyPlayer($id){
+        $this->authHelper->checkLoggedIn();
+
+        $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'], $_POST['equipo'], $_POST['posicion'], $_POST['fk_id_nacionalidad']);
+        $role = $this->authHelper->getRole();
+        $player = $this->model->getPlayerFromDB($id);
+        $this->view->viewPlayer($player, $role);
     }
 
     

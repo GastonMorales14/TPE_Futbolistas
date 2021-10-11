@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-
+<body>
 <div>
 
     <div>
