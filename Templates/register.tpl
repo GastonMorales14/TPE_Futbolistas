@@ -1,29 +1,46 @@
-{include file='templates/header.tpl'}
-<body>
-<div>
+{include file='Templates/header.tpl'}
+<body class="fondoHome">
 
-    <div>
-        <div>
-            <h2>Registrarse</h2>
-            <form class="form-alta" action="createUser" method="post">
-                
-                <input placeholder="Nombre" type="text" name="name" id="name" required>
-                <input placeholder="Apellido" type="text" name="surname" id="surname" required>
-                <input placeholder="Fecha de nacimiento" type="date" name="birthday" id="birthday" required>
-                <input placeholder="email" type="text" name="email" id="email" required>
-                <input placeholder="password" type="password" name="password" id="password" required>
-                <input type="submit" class="btn btn-primary" value="Registrarse">
-            </form>
+
+<div class="container w-75 justify-content-center mt-4 mb-4 rounded shadow">
+      <div class="bg-white p-5 rounded-end">
+        <div class="btn btn-primary">
+            <a href="login" class="text-decoration-none text-white">Volver</a> 
+        </div>
+        <h2 class="fw-bold text-center py-5 text-info">Eliminatorias Sud</h2>
+        <p class="fw-bold text-center pb-5 text-secondary">Registrate para ver las citaciones de tu Seleccion!</p>
+       
+       <form class="form-alta" action="createUser" method="post">
+            <div class="col-12">
+              <label class="form-label">Nombre</label>
+              <input class="form-control" type="text" name="name" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Apellido</label>
+              <input class="form-control" type="text" name="surname" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Fecha de nacimiento</label>
+              <input class="form-control" type="date" name="birthday" id="birthday" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Correo Electronico</label>
+              <input class="form-control" type="text" name="email" id="email" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Password</label>
+              <input class="form-control" type="password" name="password" id="password" required>
+            </div>
+            <div class="col-12 mt-3">
+              <input type="submit" class="btn btn-primary" value="Registrate">
+            </div>
+        </form>
         </div>
     </div>
     <h4 class="alert-danger">{$error}</h4>
 
-    <div>
-        <p><a href="login">volver</a></p>
-    </div>
-
     
 
-</div>
 
-{include file='templates/footer.tpl'}
+
+{include file='Templates/footer.tpl'}
