@@ -10,6 +10,11 @@ class PlayerView{
         $this->smarty = new Smarty();
     }
 
+    function showHome($nations){
+        $this->smarty->assign('nations', $nations);
+        $this->smarty->display('templates/home.tpl');
+    }
+
     function showPlayers($players,$role){
                 
         $this->smarty->assign('players', $players);

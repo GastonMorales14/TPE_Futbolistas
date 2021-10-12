@@ -19,15 +19,21 @@ class PlayerController{
 
     function showHome(){
         $this->authHelper->checkLoggedIn();
+        $nations = $this->model->getNations();
+        $this->view->showHome($nations);
+    }
+
+    function showNation($id){
+        $this->authHelper->checkLoggedIn();
         $role = $this->authHelper->getRole();
-        $players = $this->model->getPlayers();
+        $players = $this->model->getPlayers($id);
         $this->view->showPlayers($players,$role);
 
     }
 
     function createPlayer(){
         $this->authHelper->checkLoggedIn();
-        $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['equipo'],$_POST['posicion'],$_POST['fk_id_nacionalidad']);
+        $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['numeroCamiseta'],$_POST['equipo'],$_POST['posicion'],$_POST['edad'],$_POST['fk_id_nacionalidad']);
         $this->view->showHomeLocation();
     }
   
@@ -48,7 +54,7 @@ class PlayerController{
     function modifyPlayer($id){
         $this->authHelper->checkLoggedIn();
 
-        $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'], $_POST['equipo'], $_POST['posicion'], $_POST['fk_id_nacionalidad']);
+        $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'],$_POST['numeroCamiseta'], $_POST['equipo'], $_POST['posicion'], $_POST['edad'], $_POST['fk_id_nacionalidad']);
         $role = $this->authHelper->getRole();
         $player = $this->model->getPlayerFromDB($id);
         $this->view->viewPlayer($player, $role);

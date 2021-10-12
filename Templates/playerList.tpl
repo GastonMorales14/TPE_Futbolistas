@@ -7,13 +7,10 @@
             <tr>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
-                <th>POSICION</th>
-                <th>EQUIPO</th>
                 <th>NACIONALIDAD</th>
                 <th>VER</th>
                 {if $role == true}
                     <th>ELIMINAR</th>
-                    
                 {/if}
             </tr>
         </thead>
@@ -22,9 +19,7 @@
             <tr>
                 <td>{$player->nombre}</td>
                 <td>{$player->apellido}</td>
-                <td>{$player->posicion}</td>
-                <td>{$player->equipo}</td>
-                <td>{$player->nacionalidad}</td>
+                <td>{$player->nombre_seleccion}</td>
 
                 
                 <td><a class="btn" href="viewPlayer/{$player->id_jugador}">Ver</a></td>
@@ -49,8 +44,11 @@
                 
         <input placeholder="Nombre" type="text" name="nombre" required>
         <input placeholder="Apellido" type="text" name="apellido" required>
-        <input placeholder="equipo" type="text" name="equipo" required>
-        <input placeholder="posicion" type="text" name="posicion" required>
+        <input placeholder="Camiseta" type="number" name="numeroCamiseta" required>
+        <input placeholder="Equipo" type="text" name="equipo" required>
+        <input placeholder="Posicion" type="text" name="posicion" required>
+        <input placeholder="Edad" type="number" name="edad" required>
+        
         <select name="fk_id_nacionalidad">
             <option value="1">Argentina</option>
             <option value="2">Brasil</option>
