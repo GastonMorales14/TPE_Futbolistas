@@ -49,7 +49,7 @@
 
 
      <div>
-        <p><a href="home">volver</a></p>
+        <p><a href="nation/{$player->fk_id_nacionalidad}">volver</a></p>
     </div>
 
 

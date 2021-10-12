@@ -34,7 +34,7 @@
         </tbody>
     </table>
     
-    <a href="logout">Logout</a>
+    <p><a href="home">volver</a></p>
 
 
     {if $role == true}
