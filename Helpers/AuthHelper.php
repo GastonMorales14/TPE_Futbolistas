@@ -7,15 +7,17 @@ class AuthHelper{
 
     function checkLoggedIn(){
         session_start();
-        if(!isset($_SESSION["email"])){  
-            header("Location: ".BASE_URL."login");
+        if(isset($_SESSION["email"])){  
+            return true;
+        } else {
+            return false;
         }
     }
 
-    function getRole() {
-        if(isset($_SESSION['role'])) {
-            $role = $_SESSION['role'];
-            return $role;
+    function getName() {
+        if(isset($_SESSION['name'])) {
+            $name = $_SESSION['name'];
+            return $name;
         }
 
     }

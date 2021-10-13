@@ -15,7 +15,7 @@ class LoginController {
     function logout(){
         session_start();
         session_destroy();
-        $this->view->showLogin("Buena suerte!");
+        $this->view->showHome();
     }
 
     function login(){
@@ -31,14 +31,14 @@ class LoginController {
      
             // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($email);
-            $role = $user->role;
+            $name = $user->name;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
 
                 session_start();
                 $_SESSION['email'] = $email;
-                $_SESSION['role'] = $role;
+                $_SESSION['name'] = $name;
                 
 
                 

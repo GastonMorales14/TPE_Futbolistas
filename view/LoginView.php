@@ -14,8 +14,7 @@ class LoginView{
         $this->smarty->display('Templates/login.tpl');
     }
 
-    function showHome($role = true){
-        $this->smarty->assign('role', $role); 
+    function showHome(){
         $this->smarty->display('Templates/playerList.tpl');
 
         header("Location: ".BASE_URL."home");

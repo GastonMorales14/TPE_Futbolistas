@@ -4,6 +4,7 @@
 require_once "Controller/PlayerController.php";
 require_once "Controller/LoginController.php";
 require_once "Controller/RegisterController.php";
+require_once "Controller/NationController.php";
  
 
 
@@ -22,6 +23,8 @@ $params = explode('/', $action);
 $playerController = new PlayerController();
 $loginController = new LoginController();
 $registerController = new RegisterController();
+$nationController = new NationController();
+
 
 
 switch ($params[0]) { 
@@ -35,7 +38,7 @@ switch ($params[0]) {
             $loginController->verifyLogin(); 
             break;
         case 'home': 
-            $playerController->showHome(); 
+            $nationController->showHome(); 
             break;
         case 'register': 
             $registerController->register(); 
@@ -44,10 +47,10 @@ switch ($params[0]) {
             $registerController->createUser();
             break;
         case 'createPlayer':
-            $playerController->createPlayer();
+            $playerController->createPlayer($params[1]);
             break;
         case 'deletePlayer':
-            $playerController->deletePlayer($params[1]);
+            $playerController->deletePlayer($params[1], $params[2]);
             break;
         case 'modifyPlayer':
             $playerController->modifyPlayer($params[1]);
@@ -56,10 +59,18 @@ switch ($params[0]) {
             $playerController->viewPlayer($params[1]);
             break;
         case 'nation': 
-            $playerController->showNation($params[1]); 
+            $nationController->showNation($params[1]); 
             break;
-
-
+        case 'createNation': 
+            $nationController->createNation(); 
+            break;
+        case 'deleteNation': 
+            $nationController->deleteNation($params[1]); 
+            break;         
+        case 'modifyNation': 
+            $nationController->modifyNation($params[1]); 
+            break; 
+            
         default: 
             echo('404 Page not found'); 
             break;

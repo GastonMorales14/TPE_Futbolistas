@@ -9,8 +9,12 @@
     
     
     <div class="d-flex flex-row justify-content-end row">
-        <h2 class="text-white col-2 text-end">Bienvenido</h2>
-        <a href="logout" class="btn btn-primary text-decoration-none text-white p-0 col-2">LOGOUT</a> 
+        {if $logged == true}
+            <h2 class="text-white col-2 text-end">Bienvenido {$name}</h2>
+            <a href="logout" class="btn btn-primary text-decoration-none text-white p-0 col-2">LOGOUT</a>
+        {else}
+                <a href= "login" class="btn btn-primary text-decoration-none text-white p-0 col-2">INGRESAR</a>    
+        {/if}
     </div>  
     </div>
         
@@ -24,9 +28,15 @@
         </div>
 
     {/foreach}
+                
 </section>
 
-
+{if $logged == true}
+    <form class="form-alta" action="createNation" method="POST">
+        <input placeholder="Agregar una seleccion" type="text" name="seleccion" required>
+        <input type="submit" class="btn btn-success" value="Agregar">
+    </form> 
+{/if}
 
 
 

@@ -10,26 +10,13 @@ class PlayerView{
         $this->smarty = new Smarty();
     }
 
-    function showHome($nations){
-        $this->smarty->assign('nations', $nations);
-        $this->smarty->display('templates/home.tpl');
+    function showHomeLocation($id){
+        header("Location: ".BASE_URL."nation/".$id);
     }
 
-    function showPlayers($players,$role){
-                
-        $this->smarty->assign('players', $players);
-        $this->smarty->assign('role', $role);
-
-        $this->smarty->display('templates/playerList.tpl');
-    }
-
-    function showHomeLocation(){
-        header("Location: ".BASE_URL."home");
-    }
-
-    function viewPlayer($player,$role){
+    function viewPlayer($player, $logged){
         $this->smarty->assign('player', $player);
-        $this->smarty->assign('role', $role);
+        $this->smarty->assign('logged', $logged);
         $this->smarty->display('templates/playerDetail.tpl');
     }
 

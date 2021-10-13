@@ -28,7 +28,7 @@
     </tbody>
 </table>
 
- {if $role == true}
+ {if $logged == true}
 <form class="form-alta" action="modifyPlayer/{$player->id_jugador}" method="POST">
                 
         <input placeholder="Nombre" type="text" name="nombre" required>
@@ -37,12 +37,6 @@
         <input placeholder="Equipo" type="text" name="equipo" required>
         <input placeholder="Posicion" type="text" name="posicion" required>
         <input placeholder="Edad" type="number" name="edad" required>
-        <select name="fk_id_nacionalidad">
-            <option value="1">Argentina</option>
-            <option value="2">Brasil</option>
-            <option value="3">Uruguay</option>
-            <option value="4">Colombia</option>
-        </select>
         <input type="submit" class="btn btn-success" value="Modificar">
     </form>
      {/if}
