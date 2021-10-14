@@ -10,10 +10,10 @@
     
     
         {if $logged == true}
-            <h2 class="text-white col-2 pt-4">Bienvenido {$name}</h2>
+            <h2 class="text-white col-2 pt-4 text-uppercase">Bienvenido {$name}</h2>
             <a href="logout" class="btn fondoHeder text-decoration-none text-white pt-5 col-2">CERRAR SESION</a>
         {else}
-            <a href= "login" class="btn btn-primary text-decoration-none text-white pt-5 col-2">INGRESAR</a>    
+            <a href= "login" class="btn fondoHeder text-decoration-none text-white pt-5 col-2">INGRESAR</a>    
         {/if}
      
     

@@ -32,7 +32,7 @@
               <input class="form-control" type="password" name="password" id="password" required>
             </div>
             <div class="col-12 mt-3">
-              <input type="submit" class="btn btn-primary" value="Registrate">
+              <input type="submit" class="btn fondoHeder text-white" value="Registrate">
             </div>
         </form>
         </div>
