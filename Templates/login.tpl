@@ -9,7 +9,7 @@
             </div>
             <div class="col bg-white p-5 rounded-end">
                
-                <h2 class="fw-bold text-center py-5 text-info">Eliminatorias Sud</h2>
+                <h2 class="fw-bold text-center py-5 text-secondary">Eliminatorias Sud</h2>
             
             <form class="form-alta" action="verify" method="post">
                 <div class="mb-4">
@@ -21,7 +21,7 @@
                     <input type="password" class="form-control" name="password" id="password" required>
                 </div>
                 <div class="d-grid">
-                    <input type="submit" class="btn btn-primary" value="Iniciar Sesion">
+                    <input type="submit" class="btn fondoHeder text-white" value="Iniciar Sesion">
                 </div>
 
                 <h4 class="alert-danger text-center mb-3">{$error}</h4>

@@ -4,7 +4,7 @@
 
 <div class="container w-75 justify-content-center mt-4 mb-4 rounded shadow">
       <div class="bg-white p-5 rounded-end">
-        <div class="btn btn-primary">
+        <div class="btn fondoHeder">
             <a href="login" class="text-decoration-none text-white">Volver</a> 
         </div>
         <h2 class="fw-bold text-center py-5 text-info">Eliminatorias Sud</h2>
