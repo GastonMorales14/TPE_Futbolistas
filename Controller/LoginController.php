@@ -12,16 +12,20 @@ class LoginController {
         $this->model = new UserModel();
         $this->view = new LoginView();
     }
+
+    /* destruye la sesion y muestra el home */
     function logout(){
         session_start();
         session_destroy();
         $this->view->showHome();
     }
 
+    /* muestra el login */
     function login(){
         $this->view->showLogin();
     }
 
+    /* verifica el mail y la contraseña  */
     function verifyLogin(){
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $email = $_POST['email'];
@@ -29,13 +33,14 @@ class LoginController {
             
            
      
-            // Obtengo el usuario de la base de datos
+            // Obtengo el usuario de la base de datos y guarda su nombre en una variable
             $user = $this->model->getUser($email);
             $name = $user->name;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
 
+                // guarda el email y el nombre en la sesion
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
@@ -44,7 +49,7 @@ class LoginController {
                 
                 $this->view->showHome();
             } else {
-                $this->view->showLogin("Acceso denegado");
+                $this->view->showLogin("Acceso denegado"); //si no coinciden o no existen acceso denegado
             }
         }
     }

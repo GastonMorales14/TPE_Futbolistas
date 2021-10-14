@@ -16,7 +16,7 @@ class RegisterController {
         $this->view->showRegister();
     }
 
-
+    //crea un usuario con datos y contraseña hasheada y redirige a la home
     function createUser(){
         if(!empty($_POST['name'])&& !empty($_POST['surname']) && !empty($_POST['birthday']) && !empty($_POST['email'])&&!empty($_POST['password'])) {
             $userName=$_POST['name'];

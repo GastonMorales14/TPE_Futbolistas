@@ -17,14 +17,16 @@ class NationController{
 
     }
 
+    // trae todas las selecciones del model y se las pasa al view
     function showHome(){
         $logged = $this->authHelper->checkLoggedIn();
 
         $name = $this->authHelper->getName();
-        $nations = $this->model->getNations();
-        $this->view->showHome($nations, $logged, $name);
+        $nations = $this->model->getNations();   
+        $this->view->showHome($nations, $logged, $name); 
     }
 
+    //trae una seleccion del model y se la pasa al view
     function showNation($id){
         $logged = $this->authHelper->checkLoggedIn();
         
@@ -33,6 +35,7 @@ class NationController{
 
     }
 
+    //crea una nuyeva seleccion(solo si el usuario esta logueado)
     function createNation(){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
@@ -40,7 +43,7 @@ class NationController{
             $this->view->showHomeLocation();
         }
     }
-
+    //elimina una seleccion elegida (solo si el usuario esta logueado)
     function deleteNation($id) {
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){            
@@ -49,6 +52,7 @@ class NationController{
         }
     }
 
+    //modifica una seleccion elegida (solo si el usuario esta logueado)
     function modifyNation($id){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){

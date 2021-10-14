@@ -10,6 +10,7 @@ class RegisterModel {
         
     }
 
+    //envia los datos del nuevo usuario a la BD
     function postUser($userName, $userSurname,$userBirthday,$userEmail,$userPassword) {
         $query = $this->db->prepare('INSERT INTO users(name, surname, birthday, email, password) VALUES (?,?,?,?,?)');
         $query->execute(array($userName, $userSurname,$userBirthday,$userEmail,$userPassword));

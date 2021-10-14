@@ -9,6 +9,7 @@ class UserModel{
          $this->db = new PDO('mysql:host=localhost;'.'dbname=db_selecciones_futbol;charset=utf8', 'root', '');
     }
 
+    //trae el usuario correspondiente al email de la BD
     function getUser($email){
         $query = $this->db->prepare('SELECT * FROM users WHERE email = ?');
         $query->execute([$email]);

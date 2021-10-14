@@ -17,7 +17,7 @@ class PlayerController{
 
     }
 
-
+    //crea un nuevo jugador
     function createPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
@@ -26,7 +26,7 @@ class PlayerController{
         }
     }
   
-
+    //elimina un jugador elegido de la seleccion
     function deletePlayer($idSeleccion, $idJugador) {
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){            
@@ -34,13 +34,13 @@ class PlayerController{
             $this->view->showHomeLocation($idSeleccion);
         }
     }
-
+    //muestra el detalle de un jugador en pantalla
     function viewPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
         $player = $this->model->getPlayerFromDB($id);
         $this->view->viewPlayer($player,$logged);
     }
-
+    //modifica un jugador seleccionado
     function modifyPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
