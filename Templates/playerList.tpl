@@ -82,4 +82,7 @@
     {/if}
 
  </div>
+
+
+ </body>
 {include file='templates/footer.tpl'}

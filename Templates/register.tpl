@@ -39,6 +39,9 @@
     </div>
     <h4 class="alert-danger">{$error}</h4>
 
+
+  </body>
+
     
 
 

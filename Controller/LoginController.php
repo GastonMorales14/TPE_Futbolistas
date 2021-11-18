@@ -36,6 +36,7 @@ class LoginController {
             // Obtengo el usuario de la base de datos y guarda su nombre en una variable
             $user = $this->model->getUser($email);
             $name = $user->name;
+            $rol = $user->administrador;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
@@ -44,6 +45,7 @@ class LoginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
+                $_SESSION['rol'] = $rol;
                 
 
                 

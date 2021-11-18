@@ -36,5 +36,7 @@
               
         </div>
     </div>
+</div>
 
+</body>
 {include file='Templates/footer.tpl'}
