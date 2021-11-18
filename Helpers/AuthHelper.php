@@ -6,6 +6,7 @@ class AuthHelper{
     }
 
 
+
     //si esta seteada la sesion con el email retorna verdadero y sino falso para chequear si el usuario esta logueado
     function checkLoggedIn(){
         session_start();

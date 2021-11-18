@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2021 a las 21:20:29
+-- Tiempo de generación: 19-11-2021 a las 00:32:16
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -77,7 +77,7 @@ INSERT INTO `jugadores` (`id_jugador`, `nombre`, `apellido`, `numero_camiseta`, 
 (59, 'Rafael', 'Santos Borré', 18, 'Eintracht Frankfurt', 'Delantero', 26, 4),
 (60, 'Duvan', 'Zapata', 7, 'Atalanta', 'Delantero', 30, 4),
 (66, 'Marcos', 'Acuña', 8, 'Sevilla', 'Defensor', 29, 1),
-(67, 'Emiliano', 'Martinez', 23, 'Aston Villa', 'Arquero', 29, 1),
+(67, 'Julian', 'Alvarez', 15, 'River', 'delantero', 21, 1),
 (68, 'Cristian', 'Romero', 13, 'Tottenham', 'Defensor', 23, 1),
 (69, 'Nicolas', 'Otamendi', 19, 'Benfica', 'Defensor', 33, 1),
 (70, 'Gonzalo', 'Montiel', 4, 'Sevilla', 'Defensor', 24, 1),
@@ -120,16 +120,17 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `name` varchar(45) NOT NULL,
   `surname` varchar(100) NOT NULL,
-  `birthday` date NOT NULL
+  `birthday` date NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`email`, `password`, `name`, `surname`, `birthday`) VALUES
-('admin1@gmail.com', '$2y$10$m1Hcj75KUWcBnE08I5UHC.TsauLZv01e2ijQKEzWOTpkIpuztnICu', 'gabriel', 'rodriguez', '1995-02-15'),
-('demo@gmail.com', '$2y$10$nb3tqR5lSyIHNOI/wvBVTuvBNJY29Dx/lgDWheY0seJJXVouuwkEm', 'juan', 'perez', '1995-05-12');
+INSERT INTO `users` (`email`, `password`, `name`, `surname`, `birthday`, `admin`) VALUES
+('gabrieladmin@gmail.com', '$2y$10$MdP/avVgEnldXJoRXfK/PuSfSVociuYCOsUIVNHDefaj/HgV7Zai6', 'Gabriel', 'Rodriguez', '1993-08-12', 1),
+('gastonadmin@gmail.com', '$2y$10$yA9sA8DOrhylnj2e9dDed.0rBnrwPlygt5EGp53OUCMHd9OaJjeSy', 'gaston', 'morales', '1994-05-13', 1);
 
 --
 -- Índices para tablas volcadas
@@ -161,13 +162,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `nacionalidad`
 --
 ALTER TABLE `nacionalidad`
-  MODIFY `id_nacionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_nacionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

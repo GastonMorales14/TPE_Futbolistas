@@ -18,11 +18,9 @@ class NationView{
     }
 
     function showNation($players, $logged, $id){
-                
         $this->smarty->assign('players', $players);        
         $this->smarty->assign('logged', $logged);
         $this->smarty->assign('id', $id);
-
         $this->smarty->display('templates/playerList.tpl');
     }
 
