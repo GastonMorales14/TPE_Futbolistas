@@ -18,7 +18,7 @@ class RegisterView{
     }
 
     function showHomeLocation(){
-        header("Location: ".BASE_URL."login");
+        header("Location: ".BASE_URL."home");
     }
 }
     

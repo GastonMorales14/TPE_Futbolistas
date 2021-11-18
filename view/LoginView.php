@@ -15,8 +15,6 @@ class LoginView{
     }
 
     function showHome(){
-        $this->smarty->display('Templates/playerList.tpl');
-
         header("Location: ".BASE_URL."home");
     }
 

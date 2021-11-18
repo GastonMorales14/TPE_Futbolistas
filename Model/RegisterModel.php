@@ -16,5 +16,7 @@ class RegisterModel {
         $query->execute(array($userName, $userSurname,$userBirthday,$userEmail,$userPassword));
     }
 
+    
+
 }
 

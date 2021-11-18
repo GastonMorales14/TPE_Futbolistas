@@ -3,20 +3,19 @@
 
 
 
- <div class="d-flex flex-row justify-content-between fondoHeder">
+ <div class="d-flex flex-row justify-content-between fondoHeder container-fluid">
     
-    <h1 class="text-white mt-5 mb-5 px-3 col-8 text-start">Eliminatorias Sudamericanas</h1>
+    <h1 class="text-white mt-5 mb-5 px-3 text-start col-8 col-xs-12">Eliminatorias Sudamericanas</h1>
     
     
-    
+        
         {if $logged == true} {* si el usuario esta loggeado muestro = *}
-            <h2 class="text-white col-2 pt-4 text-uppercase">Bienvenido {$name}</h2>
-            <a href="logout" class="btn fondoHeder text-decoration-none text-white pt-5 col-2">CERRAR SESION</a>
+            <h2 class="text-white col-2 col-xs-12 pt-4 text-uppercase ">Bienvenido {$name}</h2>
+            <a href="logout" class="btn fondoHeder text-decoration-none text-white pt-5 col-2 col-xs-12">CERRAR SESION</a>
         {else}
-            <a href= "login" class="btn fondoHeder text-decoration-none text-white pt-5 col-2">INGRESAR</a>    
+            <a href= "login" class="btn fondoHeder text-decoration-none text-white pt-5 col-2 col-xs-12">INGRESAR</a>    
         {/if}
-     
-    
+        
         
 </div>
 
