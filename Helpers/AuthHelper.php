@@ -23,7 +23,13 @@ class AuthHelper{
             $name = $_SESSION['name'];
             return $name;
         }
-
+    }
+    //trae el rol del usuario loggeado
+    function getRole() {
+        if(isset($_SESSION['role'])) {
+            $role = $_SESSION['role'];
+            return $role;
+        }
     }
 
 }

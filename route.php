@@ -5,6 +5,7 @@ require_once "Controller/PlayerController.php";
 require_once "Controller/LoginController.php";
 require_once "Controller/RegisterController.php";
 require_once "Controller/NationController.php";
+require_once "Controller/UserController.php";
  
 
 
@@ -25,6 +26,8 @@ $playerController = new PlayerController();
 $loginController = new LoginController();
 $registerController = new RegisterController();
 $nationController = new NationController();
+$userController = new UserController();
+
 
 
 
@@ -71,7 +74,15 @@ switch ($params[0]) {
         case 'modifyNation': 
             $nationController->modifyNation($params[1]); 
             break; 
-            
+        case 'users': 
+            $userController->showUsers(); 
+            break;
+        case 'changeRole': 
+            $userController->changeRole($params[1], $params[2]); 
+            break;      
+        case 'deleteUser': 
+            $userController->deleteUser($params[1]); 
+            break;      
         default: 
             echo('404 Page not found'); 
             break;

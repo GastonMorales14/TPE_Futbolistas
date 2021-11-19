@@ -9,7 +9,7 @@ class LoginController {
     private $view;
 
     function __construct(){
-        $this->model = new UserModel();
+        $this->model = new LoginModel();
         $this->view = new LoginView();
     }
 
@@ -17,7 +17,7 @@ class LoginController {
     function logout(){
         session_start();
         session_destroy();
-        $this->view->showHome();
+        $this->view->showLogin();
     }
 
     /* muestra el login */
@@ -36,7 +36,7 @@ class LoginController {
             // Obtengo el usuario de la base de datos y guarda su nombre en una variable
             $user = $this->model->getUser($email);
             $name = $user->name;
-            $rol = $user->administrador;
+            $rol = $user->admin;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
@@ -45,7 +45,7 @@ class LoginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
-                $_SESSION['rol'] = $rol;
+                $_SESSION['role'] = $role;
                 
 
                 

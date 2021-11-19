@@ -20,33 +20,41 @@ class NationController{
     // trae todas las selecciones del model y se las pasa al view
     function showHome(){
         $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            $name = $this->authHelper->getName();
+            $nations = $this->model->getNations();   
+            $this->view->showHome($nations, $logged, $role, $name);
+        }else{
+            $this->view->showLogin();
+        }
 
-        $name = $this->authHelper->getName();
-        $nations = $this->model->getNations();   
-        $this->view->showHome($nations, $logged, $name); 
     }
 
     //trae una seleccion del model y se la pasa al view
     function showNation($id){
         $logged = $this->authHelper->checkLoggedIn();
-        
-        $Nations = $this->model->getNation($id);
-        $this->view->showNation($Nations, $logged, $id);
-
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            $Nations = $this->model->getNation($id);
+            $this->view->showNation($Nations, $role, $id);
+        }else{
+            $this->view->showLogin();
+        }
     }
 
     //crea una nuyeva seleccion(solo si el usuario esta logueado)
     function createNation(){
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){
+        $role = $this->authHelper->getRole();
+        if($role == false){
             $this->model->insertNation( $_POST['seleccion']);
             $this->view->showHomeLocation();
         }
     }
     //elimina una seleccion elegida (solo si el usuario esta logueado)
     function deleteNation($id) {
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){            
+        $role = $this->authHelper->getRole();
+        if($role == false){            
             $this->model->deleteNationFromDB($id);
             $this->view->showHomeLocation();
         }
@@ -54,11 +62,11 @@ class NationController{
 
     //modifica una seleccion elegida (solo si el usuario esta logueado)
     function modifyNation($id){
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){
+        $role = $this->authHelper->getRole();
+        if($role == false){
             $this->model->modifyNationFromDB($id, $_POST['nombre_seleccion']);
             $nation = $this->model->getNation($id);
-            $this->view->showNation($nation, $logged, $id);
+            $this->view->showNation($nation, $role, $id);
         }
     }    
 

@@ -19,8 +19,8 @@ class PlayerController{
 
     //crea un nuevo jugador
     function createPlayer($id){
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){
+        $role = $this->authHelper->getRole();
+        if($role == false){
             $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['numeroCamiseta'],$_POST['equipo'],$_POST['posicion'],$_POST['edad'],$id);
             $this->view->showHomeLocation($id);
         }
@@ -28,8 +28,8 @@ class PlayerController{
   
     //elimina un jugador elegido de la seleccion
     function deletePlayer($idSeleccion, $idJugador) {
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){            
+        $role = $this->authHelper->getRole();
+        if($role == false){            
             $this->model->deletePlayerFromDB($idJugador);
             $this->view->showHomeLocation($idSeleccion);
         }
@@ -37,16 +37,19 @@ class PlayerController{
     //muestra el detalle de un jugador en pantalla
     function viewPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
-        $player = $this->model->getPlayerFromDB($id);
-        $this->view->viewPlayer($player,$logged);
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            $player = $this->model->getPlayerFromDB($id);
+            $this->view->viewPlayer($player, $role);
+        }
     }
     //modifica un jugador seleccionado
     function modifyPlayer($id){
-        $logged = $this->authHelper->checkLoggedIn();
-        if($logged == true){
+        $role = $this->authHelper->getRole();
+        if($role == false){
             $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'],$_POST['numeroCamiseta'], $_POST['equipo'], $_POST['posicion'], $_POST['edad']);
             $player = $this->model->getPlayerFromDB($id);
-            $this->view->viewPlayer($player, $logged);
+            $this->view->viewPlayer($player, $role);
         }    
     }
 

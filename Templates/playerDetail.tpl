@@ -23,7 +23,7 @@
             </div>
         </div>
 
- {if $logged == true} {* si el usuario esta loggeado muestro = *}
+ {if $role == false} {* si el usuario es admin muestro = *}
 <div class="col-6">
 <h2 class="display-3 text-center text-light">Modificar Jugador</h2>
 <form class="form-alta mb-5 mt-5 row" action="modifyPlayer/{$player->id_jugador}" method="POST">

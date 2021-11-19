@@ -1,7 +1,7 @@
 <?php
 
 
-class UserModel{
+class LoginModel{
 
     private $db;
     
