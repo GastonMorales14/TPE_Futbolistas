@@ -19,21 +19,36 @@ class PlayerController{
 
     //crea un nuevo jugador
     function createPlayer($id){
-        $role = $this->authHelper->getRole();
-        if($role == 1){
-            $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['numeroCamiseta'],$_POST['equipo'],$_POST['posicion'],$_POST['edad'],$id);
-            $this->view->showHomeLocation($id);
-        }
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            if($role == 1){
+                $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['numeroCamiseta'],$_POST['equipo'],$_POST['posicion'],$_POST['edad'],$id);
+                $this->view->showHomeLocation($id);
+            }else{
+                echo("Pagina no disponible");
+            }
+        }else{
+            $this->view->showLogin();
+        }    
     }
   
     //elimina un jugador elegido de la seleccion
     function deletePlayer($idSeleccion, $idJugador) {
-        $role = $this->authHelper->getRole();
-        if($role == 1){            
-            $this->model->deletePlayerFromDB($idJugador);
-            $this->view->showHomeLocation($idSeleccion);
-        }
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            if($role == 1){            
+                $this->model->deletePlayerFromDB($idJugador);
+                $this->view->showHomeLocation($idSeleccion);
+            }else{
+                echo("Pagina no disponible");
+            }
+        }else{
+            $this->view->showLogin();
+        }    
     }
+    
     //muestra el detalle de un jugador en pantalla
     function viewPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
@@ -41,16 +56,26 @@ class PlayerController{
             $role = $this->authHelper->getRole();
             $player = $this->model->getPlayerFromDB($id);
             $this->view->viewPlayer($player, $role);
+        }else{
+            $this->view->showLogin();
         }
     }
+
     //modifica un jugador seleccionado
     function modifyPlayer($id){
-        $role = $this->authHelper->getRole();
-        if($role == 1){
-            $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'],$_POST['numeroCamiseta'], $_POST['equipo'], $_POST['posicion'], $_POST['edad']);
-            $player = $this->model->getPlayerFromDB($id);
-            $this->view->viewPlayer($player, $role);
-        }    
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            if($role == 1){
+                $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'],$_POST['numeroCamiseta'], $_POST['equipo'], $_POST['posicion'], $_POST['edad']);
+                $player = $this->model->getPlayerFromDB($id);
+                $this->view->viewPlayer($player, $role);
+            }else{
+                echo("Pagina no disponible");
+            } 
+        }else{
+            $this->view->showLogin();
+        }       
     }
 
     

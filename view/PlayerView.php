@@ -20,4 +20,9 @@ class PlayerView{
         $this->smarty->display('templates/playerDetail.tpl');
     }
 
+    function showLogin($error = ""){
+        $this->smarty->assign('error', $error);      
+        $this->smarty->display('Templates/login.tpl');
+    }
+
 }

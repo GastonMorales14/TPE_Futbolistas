@@ -30,6 +30,8 @@ class UserController{
             }else{
                 echo("Pagina no disponible");
             }
+        }else{
+            $this->view->showLogin();
         }    
     }
 
@@ -44,10 +46,13 @@ class UserController{
                 if($userRole == 0){
                     $this->model->addAdmin($userEmail);
                 }
-                $this->showUsers();
+                $users = $this->model->getUsers();   
+                $this->view->showUsers($users);
             }else{
                 echo("Pagina no disponible");
             }    
+        }else{
+            $this->view->showLogin();
         }    
     }
 
@@ -57,10 +62,13 @@ class UserController{
             $role = $this->authHelper->getRole();
             if($role == 1){
                 $this->model->deleteUser($userEmail);
-                $this->showUsers();
+                $users = $this->model->getUsers();   
+                $this->view->showUsers($users);
             }else{
                 echo("Pagina no disponible");
             }  
+        }else{
+            $this->view->showLogin();
         }      
     }
 
