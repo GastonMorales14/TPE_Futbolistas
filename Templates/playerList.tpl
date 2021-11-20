@@ -7,15 +7,11 @@
 
     <div class="d-flex flex-row justify-content-end ">
         <a href="home" class="mt-3 btn fondoHeder text-decoration-none text-white">Volver</a> 
-        {* {if $logged == true} {* si el usuario esta loggeado muestro = *} *}
         <a href="logout" class="mx-3 mt-3 btn fondoHeder text-decoration-none text-white ">Cerrar Sesion</a>
-        {* {else}
-            <a href= "login" class="mx-3 mt-3 btn fondoHeder text-decoration-none text-white ">Ingresar</a>    
-        {/if} *}
-    </div>
+     </div>
     <h2 class="text-center text-light display-3">JUGADORES</h2>
 
-    {if $role == false} {* si el usuario es admin muestro = *}
+    {if $role == 1} {* si el usuario es admin muestro = *}
     <div class="d-flex flex-row justify-content-around mt-5 mb-5">
     <form class="form-alta w-25" action="modifyNation/{$id}" method="POST">              
         <input placeholder="Modificar nombre de seleccion" type="text" name="nombre_seleccion" required>
@@ -47,7 +43,7 @@
                 
                 <td><a class="btn fondoHeder text-white" href="viewPlayer/{$player->id_jugador}">Ver</a></td>
 
-                {if $role == false} {* si el usuario es admin muestro = *}
+                {if $role == 1} {* si el usuario es admin muestro = *}
                     <td><a class="btn btn-danger" href="deletePlayer/{$id}/{$player->id_jugador}">Eliminar</a></td>
                     
                 {/if}
@@ -60,7 +56,7 @@
    
 
 
-    {if $role == false} {* si el usuario es admin muestro = *}
+    {if $role == 1} {* si el usuario es admin muestro = *}
     
     <h2 class="display-3 text-center text-light">Cargar jugador</h2>
 

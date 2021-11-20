@@ -20,7 +20,7 @@ class PlayerController{
     //crea un nuevo jugador
     function createPlayer($id){
         $role = $this->authHelper->getRole();
-        if($role == false){
+        if($role == 1){
             $this->model->insertPlayer( $_POST['nombre'],$_POST['apellido'],$_POST['numeroCamiseta'],$_POST['equipo'],$_POST['posicion'],$_POST['edad'],$id);
             $this->view->showHomeLocation($id);
         }
@@ -29,7 +29,7 @@ class PlayerController{
     //elimina un jugador elegido de la seleccion
     function deletePlayer($idSeleccion, $idJugador) {
         $role = $this->authHelper->getRole();
-        if($role == false){            
+        if($role == 1){            
             $this->model->deletePlayerFromDB($idJugador);
             $this->view->showHomeLocation($idSeleccion);
         }
@@ -46,7 +46,7 @@ class PlayerController{
     //modifica un jugador seleccionado
     function modifyPlayer($id){
         $role = $this->authHelper->getRole();
-        if($role == false){
+        if($role == 1){
             $this->model->modifyPlayerFromDB($id, $_POST['nombre'], $_POST['apellido'],$_POST['numeroCamiseta'], $_POST['equipo'], $_POST['posicion'], $_POST['edad']);
             $player = $this->model->getPlayerFromDB($id);
             $this->view->viewPlayer($player, $role);

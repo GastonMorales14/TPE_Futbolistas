@@ -1,5 +1,5 @@
 <?php
-require_once "./Model/RegisterModel.php";
+require_once "./Model/UserModel.php";
 require_once "./View/RegisterView.php";
 
 class RegisterController {
@@ -8,7 +8,7 @@ class RegisterController {
     private $view;
 
     function __construct() {
-        $this->model = new RegisterModel();
+        $this->model = new UserModel();
         $this->view = new RegisterView();        
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once "./Model/LoginModel.php";
+require_once "./Model/UserModel.php";
 require_once "./View/LoginView.php";
 
 class LoginController {
@@ -9,7 +9,7 @@ class LoginController {
     private $view;
 
     function __construct(){
-        $this->model = new LoginModel();
+        $this->model = new UserModel();
         $this->view = new LoginView();
     }
 
@@ -36,7 +36,7 @@ class LoginController {
             // Obtengo el usuario de la base de datos y guarda su nombre en una variable
             $user = $this->model->getUser($email);
             $name = $user->name;
-            $rol = $user->admin;
+            $role = $user->admin;
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
@@ -46,6 +46,10 @@ class LoginController {
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
                 $_SESSION['role'] = $role;
+
+                /* var_dump($role);
+                var_dump($name);
+                var_dump($email); */
                 
 
                 

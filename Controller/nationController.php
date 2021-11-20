@@ -46,7 +46,7 @@ class NationController{
     //crea una nuyeva seleccion(solo si el usuario esta logueado)
     function createNation(){
         $role = $this->authHelper->getRole();
-        if($role == false){
+        if($role == 1){
             $this->model->insertNation( $_POST['seleccion']);
             $this->view->showHomeLocation();
         }
@@ -54,7 +54,7 @@ class NationController{
     //elimina una seleccion elegida (solo si el usuario esta logueado)
     function deleteNation($id) {
         $role = $this->authHelper->getRole();
-        if($role == false){            
+        if($role == 1){            
             $this->model->deleteNationFromDB($id);
             $this->view->showHomeLocation();
         }
@@ -63,7 +63,7 @@ class NationController{
     //modifica una seleccion elegida (solo si el usuario esta logueado)
     function modifyNation($id){
         $role = $this->authHelper->getRole();
-        if($role == false){
+        if($role == 1){
             $this->model->modifyNationFromDB($id, $_POST['nombre_seleccion']);
             $nation = $this->model->getNation($id);
             $this->view->showNation($nation, $role, $id);

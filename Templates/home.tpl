@@ -11,7 +11,7 @@
         
         <h2 class="text-white col-2 col-xs-12 pt-4 text-uppercase ">Bienvenido {$name}</h2>
         <a href="logout" class="btn fondoHeder text-decoration-none text-white pt-5 col-1 col-xs-12">CERRAR SESION</a>
-        {if $role == false}
+        {if $role == 1}
             <a href="users" class="btn fondoHeder text-decoration-none text-white pt-5 col-1 col-xs-12">USUARIOS</a>
         {/if}
         
@@ -33,7 +33,7 @@
                 
 </section>
 
-{if $role == false} {* si el usuario es admin muestro = *} 
+{if $role == 1} {* si el usuario es admin muestro = *} 
     <form class="form-alta d-flex flex-row justify-content-end pe-5 mt-5" action="createNation" method="POST">
         <input class="w-25" placeholder="Agregar una seleccion sudamericana" type="text" name="seleccion" required>
         <input type="submit" class="btn fondoHeder text-white" value="Agregar">

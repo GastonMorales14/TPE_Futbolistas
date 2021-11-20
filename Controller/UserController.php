@@ -19,40 +19,49 @@ class UserController{
 
     }
 
-    function showUsers(){
-        $role = $this->authHelper->getRole();
-        if($role == false){
-            $users = $this->model->getUsers();   
-            $this->view->showUsers($users);
-        }else{
-            $this->view->showLogin();
-        }
+
+    function showUsers(){ 
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){       
+            $role = $this->authHelper->getRole();
+            if($role == 1){
+                $users = $this->model->getUsers();   
+                $this->view->showUsers($users);
+            }else{
+                echo("Pagina no disponible");
+            }
+        }    
     }
 
     function changeRole($userEmail, $userRole){
-        $role = $this->authHelper->getRole();
-        if($role == false){
-            if($userRole == false){
-                $this->model->removeAdmin($userEmail);                
-            }
-            if($userRole == true){
-                $this->model->addAdmin($userEmail);
-            }
-            $this->showUsers();
-        }else{
-            $this->view->showLogin();
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            if($role == 1){
+                if($userRole == 1){
+                    $this->model->removeAdmin($userEmail);                
+                }
+                if($userRole == 0){
+                    $this->model->addAdmin($userEmail);
+                }
+                $this->showUsers();
+            }else{
+                echo("Pagina no disponible");
+            }    
         }    
-
     }
 
     function deleteUser($userEmail){
-        $role = $this->authHelper->getRole();
-        if($role == false){
-            $this->model->deleteUser($userEmail);
-            $this->showUsers();
-        }else{
-            $this->view->showLogin();
-        }    
+        $logged = $this->authHelper->checkLoggedIn();
+        if($logged == true){
+            $role = $this->authHelper->getRole();
+            if($role == 1){
+                $this->model->deleteUser($userEmail);
+                $this->showUsers();
+            }else{
+                echo("Pagina no disponible");
+            }  
+        }      
     }
 
 
