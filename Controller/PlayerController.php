@@ -55,7 +55,7 @@ class PlayerController{
         if($logged == true){
             $role = $this->authHelper->getRole();
             $player = $this->model->getPlayerFromDB($id);
-            $this->view->viewPlayer($player, $role);
+            $this->view->viewPlayer($player, $role, $id);
         }else{
             $this->view->showLogin();
         }

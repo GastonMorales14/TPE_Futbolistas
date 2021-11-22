@@ -1,7 +1,7 @@
 <?php
 
-require_once "libs/Router.php";
-require_once "Controller/ApiCommentController"
+require_once "libs/Route.php";
+require_once "Controller/ApiCommentController.php";
 
 // crea el router
 $router = new Router();

@@ -15,8 +15,8 @@ class ApiCommentController{
 
     }
 
-    function getComments($params = []) {
-        $comments = $this->model->getComments();
-        return $this->view->response($comments, 200);
+    function getComments() {
+        $comments = $this->model->getNation();
+        return $this->view->response($comments, 200);//dar mas logica a esta parte
   }
-  
+}
