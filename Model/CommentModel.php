@@ -9,17 +9,30 @@ class CommentModel{
           $this->db = new PDO('mysql:host=localhost;'.'dbname=db_selecciones_futbol;charset=utf8', 'root', '');
     }
 
-    function getComments($id){
-          $query = $this->db->prepare("SELECT * FROM comentarios JOIN users WHERE comentarios.fk_email_usuario = users.email AND comentarios.fk_id_jugador = ?");
-          $query->execute(array($id));
-          $comments = $query->fetch(PDO::FETCH_OBJ);
+    function getComments(){
+          //borrar fk a id_jugador en la tabla de comentarios
+          $query = $this->db->prepare("SELECT * FROM comentarios JOIN users WHERE comentarios.fk_email_usuario = users.email");
+          $query->execute(array());
+          $comments = $query->fetchAll(PDO::FETCH_OBJ);
           return $comments;
     }
 
-    function getNation(){
-     $query = $this->db->prepare( "SELECT * FROM jugadores");
-     $query->execute(array());
-     $players = $query->fetchAll(PDO::FETCH_OBJ);
-     return $players;
+    function getComment($id){
+      $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_comentario=?");
+      $sentencia->execute(array($id));
+      $comment = $sentencia->fetch(PDO::FETCH_OBJ);
+      return $comment;
+  }
+
+    function addComment($email, $comment, $date, $player, $points, $time){
+      $sentencia = $this->db->prepare("INSERT INTO comentarios (fk_email_usuario, comentario, fecha, fk_id_jugador, puntos, hora ) VALUES(?, ?, ?, ?, ?, ?)");
+      $sentencia->execute(array($email, $comment, $date, $player, $points, $time));
+      return $this->db->lastInsertId();
     }
+  
+    function deleteComment($id){
+      $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id_comentario=?");
+      $response = $sentencia->execute(array($id));
+  }
+    
 }    

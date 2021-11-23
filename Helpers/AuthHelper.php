@@ -32,6 +32,13 @@ class AuthHelper{
         }
     }
 
+    function getEmail(){
+        if(isset($_SESSION['email'])) {
+            $email = $_SESSION['email'];
+            return $email;
+        }
+    }
+
 }
 
 

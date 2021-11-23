@@ -53,9 +53,10 @@ class PlayerController{
     function viewPlayer($id){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
+            $email = $this->authHelper->getEmail();
             $role = $this->authHelper->getRole();
             $player = $this->model->getPlayerFromDB($id);
-            $this->view->viewPlayer($player, $role, $id);
+            $this->view->viewPlayer($player, $email, $role, $id);
         }else{
             $this->view->showLogin();
         }

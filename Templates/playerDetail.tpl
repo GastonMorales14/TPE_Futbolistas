@@ -42,14 +42,35 @@
      {/if}
 
     </div>
-    
 
+    <h6 class="text-light">COMENTARIOS</h6>
+    
+    <form id="frm-comment" data-email={$email}>
+            <div class="input-row">
+                <textarea class="input-field" type="text" name="comment"
+                    id="comment" placeholder="Add a Comment">  </textarea>
+            </div>
+            <div id="valuation" class="valuation">
+                <input id="radio1" type="radio" name="stars" value="5">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="stars" value="4">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="stars" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="stars" value="2">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="stars" value="1">
+                <label for="radio5">★</label>
+            </div>
+            <button id="btn-comment" type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
+
+        </form>
      
 
 
-    </div data-id={$id}>
+    <section id="commentSection" class="text-light" data-user={$role} data-player={$id}>
         {include file='templates/vue/comments.tpl'}
-    <div>
+    </section>
 </div>
 
 <script src="js/comments.js"></script>

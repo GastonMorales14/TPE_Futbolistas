@@ -9,7 +9,7 @@ $router = new Router();
 // define la tabla de ruteo
 $router->addRoute('comentarios', 'GET', 'ApiCommentController', 'getComments');
 $router->addRoute('comentarios', 'POST', 'ApiCommentController', 'addComment');
-$router->addRoute('comentarios/:ID', 'DELETE', 'ApiCommentController', 'getComentario');
+$router->addRoute('comentarios/:ID', 'DELETE', 'ApiCommentController', 'deleteComment');
 
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
