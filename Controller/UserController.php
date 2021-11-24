@@ -19,7 +19,7 @@ class UserController{
 
     }
 
-
+    //trae a los usuarios y los muestra
     function showUsers(){ 
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){       
@@ -35,6 +35,8 @@ class UserController{
         }    
     }
 
+
+    //cambia el rol del usuario seleccionado
     function changeRole($userEmail, $userRole){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
@@ -56,6 +58,7 @@ class UserController{
         }    
     }
 
+    //elimina el usuario seleccionado
     function deleteUser($userEmail){
         $logged = $this->authHelper->checkLoggedIn();
         if($logged == true){
@@ -72,5 +75,5 @@ class UserController{
         }      
     }
 
-
+    
 }

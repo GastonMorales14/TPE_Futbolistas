@@ -9,6 +9,7 @@ class UserModel{
          $this->db = new PDO('mysql:host=localhost;'.'dbname=db_selecciones_futbol;charset=utf8', 'root', '');
     }
 
+    // trae todos los usuarios de la db
     function getUsers(){
         $query = $this->db->prepare("SELECT * FROM users");
         $query->execute();
@@ -17,16 +18,19 @@ class UserModel{
         
     }
 
+    //cambia de admin a usuario comun
     function removeAdmin($userEmail){
         $query = $this->db->prepare("UPDATE users SET admin = ? WHERE email = ?");
         $query->execute(array(0, $userEmail));
     }
 
+    //cambia de usuario comun a admin
     function addAdmin($userEmail){
         $query = $this->db->prepare("UPDATE users SET admin = ? WHERE email = ?");
         $query->execute(array(1, $userEmail));
     }
 
+    //elimina un usuario
     function deleteUser($email) {
         $query = $this->db->prepare("DELETE FROM users WHERE email=?");
         $query->execute(array($email));

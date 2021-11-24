@@ -31,7 +31,6 @@
                 {else}
                     <td>No</td>
                 {/if}                
-                {*<td><a class="btn fondoHeder text-white" href="viewuser/{$user->email}">Ver</a></td>*}
                 <td><a class="btn btn-danger" href="changeRole/{$user->email}/{$user->admin}">Cambiar</a></td>
                 <td><a class="btn btn-danger" href="deleteUser/{$user->email}">Eliminar</a></td>
             </tr>

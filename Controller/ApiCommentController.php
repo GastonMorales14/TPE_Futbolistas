@@ -15,6 +15,7 @@ class ApiCommentController{
 
     }
 
+    //manda al model a traer los comentarios de la db y los pasa al view
     function getComments(){
         $comments = $this->model->getComments();
         return $this->view->response($comments, 200);
@@ -27,6 +28,7 @@ class ApiCommentController{
         return json_decode($bodyString);
     }
 
+    //trae el POST y lo pasa al model
     function addComment($params = null) {
         $body = $this->getBody();
 
@@ -38,7 +40,7 @@ class ApiCommentController{
         }
     }
     
-
+    //trae el id del comentario seleccionado y manda al model a borrarlo de la db
     function deleteComment($params = null) {
         $idComment = $params[":ID"];
         $comment = $this->model->getComment($idComment);

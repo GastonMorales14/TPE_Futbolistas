@@ -45,12 +45,7 @@ class LoginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
-                $_SESSION['role'] = $role;
-
-                /* var_dump($role);
-                var_dump($name);
-                var_dump($email); */
-                
+                $_SESSION['role'] = $role;               
 
                 
                 $this->view->showHome();

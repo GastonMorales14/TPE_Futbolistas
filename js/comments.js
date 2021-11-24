@@ -7,6 +7,7 @@ let user = document.querySelector("#commentSection").dataset.user;
 
 document.querySelector("#btn-comment").addEventListener("click", publishComment);
 
+
 let app = new Vue({
     el: "#commentContainer",
     data:{
@@ -15,6 +16,7 @@ let app = new Vue({
         role : user
     },
     methods:{
+        //eliminia el comentario seleccionado
         deleteComment: async function(id){
             try{
                 let response = await fetch(`${API_URL}/${id}`, {
@@ -33,7 +35,7 @@ let app = new Vue({
         
 })
 
-
+//obtiene los comentarios de la api
 async function getComments(){
     try{
         let response = await fetch(API_URL);
@@ -46,8 +48,8 @@ async function getComments(){
     }
 }
 
-async function publishComment(e){
-    e.preventDefault();
+//envia el nuevo comentario a la api
+async function publishComment(){
     let email = document.querySelector("#frm-comment").dataset.email;
     let date = getDate();
     let form = document.querySelector('#frm-comment');
@@ -72,6 +74,7 @@ async function publishComment(e){
     getComments();
 }
 
+//obtiene la fecha
 function getDate(){
     let date = new Date();
     let time = date.getHours();

@@ -32,6 +32,7 @@ class AuthHelper{
         }
     }
 
+    //trae el email del usuario loggeado
     function getEmail(){
         if(isset($_SESSION['email'])) {
             $email = $_SESSION['email'];
