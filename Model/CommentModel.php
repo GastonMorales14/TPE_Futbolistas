@@ -10,7 +10,6 @@ class CommentModel{
     }
 
     function getComments(){
-          //borrar fk a id_jugador en la tabla de comentarios
           $query = $this->db->prepare("SELECT * FROM comentarios JOIN users WHERE comentarios.fk_email_usuario = users.email");
           $query->execute(array());
           $comments = $query->fetchAll(PDO::FETCH_OBJ);
