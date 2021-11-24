@@ -18,7 +18,11 @@ class ApiCommentController{
     //manda al model a traer los comentarios de la db y los pasa al view
     function getComments(){
         $comments = $this->model->getComments();
-        return $this->view->response($comments, 200);
+        if(isset($comments)){
+            return $this->view->response($comments, 200);
+        }else{
+            return $this->view->response("No se puedieron cargar los comentarios", 500);
+        }
        
     }
 
@@ -29,14 +33,15 @@ class ApiCommentController{
     }
 
     //trae el POST y lo pasa al model
-    function addComment($params = null) {
+    function addComment() {
         $body = $this->getBody();
-
-        $id = $this->model->addComment($body->email, $body->comment, $body->date, $body->player, $body->points, $body->date);
-        if ($id != 0) {
-            $this->view->response("El comentario ha sido publicado con el id=$id", 201);
-        } else {
-            $this->view->response("No pudo publicarse el comentario", 500);
+        if(isset($body) && !empty($body->email && $body->comment && $body->date && $body->player && $body->points)){
+            $id = $this->model->addComment($body->email, $body->comment, $body->date, $body->player, $body->points, $body->date);
+            if ($id != 0) {
+                $this->view->response("El comentario ha sido publicado con el id=$id", 200);
+            } else {
+                $this->view->response("No pudo publicarse el comentario", 500);
+            }
         }
     }
     
@@ -45,7 +50,7 @@ class ApiCommentController{
         $idComment = $params[":ID"];
         $comment = $this->model->getComment($idComment);
 
-        if ($comment) {
+        if (isset($comment)) {
             $this->model->deleteComment($idComment);
             return $this->view->response("El comentario con el id=$idComment fue borrado", 200);
         } else {

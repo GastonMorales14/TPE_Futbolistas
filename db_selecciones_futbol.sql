@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 22:40:52
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 25-11-2021 a las 00:45:28
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,11 +31,19 @@ CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `comentario` varchar(150) NOT NULL,
   `fk_email_usuario` varchar(45) NOT NULL,
-  `fk_id_jugador` int(11) NOT NULL,
+  `id_jugador` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `puntos` tinyint(1) NOT NULL DEFAULT 0,
   `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `comentario`, `fk_email_usuario`, `id_jugador`, `fecha`, `puntos`, `hora`) VALUES
+(28, '  El mejor de todos los tiempos', 'gastonadmin@gmail.com', 74, '2021-11-24', 5, '16:11:51'),
+(29, '  la pelota siempre al 10!', 'gabitandil94@gmail.com', 74, '2021-11-24', 5, '16:21:20');
 
 -- --------------------------------------------------------
 
@@ -185,7 +193,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `jugadores`

@@ -28,7 +28,6 @@ class RegisterController {
         $this->model->postUser($userName, $userSurname,$userBirthday,$userEmail,$userPassword);
        
            
-        //agregue esto
         session_start();
         $_SESSION['email'] = $userEmail;
         $_SESSION['name'] = $userName;
