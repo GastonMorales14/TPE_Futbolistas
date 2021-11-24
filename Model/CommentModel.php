@@ -25,7 +25,7 @@ class CommentModel{
   }
 
     function addComment($email, $comment, $date, $player, $points, $time){
-      $sentencia = $this->db->prepare("INSERT INTO comentarios (fk_email_usuario, comentario, fecha, fk_id_jugador, puntos, hora ) VALUES(?, ?, ?, ?, ?, ?)");
+      $sentencia = $this->db->prepare("INSERT INTO comentarios (fk_email_usuario, comentario, fecha, id_jugador, puntos, hora ) VALUES(?, ?, ?, ?, ?, ?)");
       $sentencia->execute(array($email, $comment, $date, $player, $points, $time));
       return $this->db->lastInsertId();
     }

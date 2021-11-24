@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2021 a las 00:32:16
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.10
+-- Tiempo de generación: 23-11-2021 a las 22:40:52
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_selecciones_futbol`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `comentario` varchar(150) NOT NULL,
+  `fk_email_usuario` varchar(45) NOT NULL,
+  `fk_id_jugador` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `puntos` tinyint(1) NOT NULL DEFAULT 0,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -121,7 +137,7 @@ CREATE TABLE `users` (
   `name` varchar(45) NOT NULL,
   `surname` varchar(100) NOT NULL,
   `birthday` date NOT NULL,
-  `admin` tinyint(1) NOT NULL
+  `admin` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -129,12 +145,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`email`, `password`, `name`, `surname`, `birthday`, `admin`) VALUES
+('gabitandil94@gmail.com', '$2y$10$k2y0bltvrU8RV.2aWrZ0vOF0hSdLrVpdvrbwJKrX74ipN/NhitAFC', 'lalo', 'landa', '4665-04-13', 0),
 ('gabrieladmin@gmail.com', '$2y$10$MdP/avVgEnldXJoRXfK/PuSfSVociuYCOsUIVNHDefaj/HgV7Zai6', 'Gabriel', 'Rodriguez', '1993-08-12', 1),
 ('gastonadmin@gmail.com', '$2y$10$yA9sA8DOrhylnj2e9dDed.0rBnrwPlygt5EGp53OUCMHd9OaJjeSy', 'gaston', 'morales', '1994-05-13', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`);
 
 --
 -- Indices de la tabla `jugadores`
@@ -159,16 +182,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `nacionalidad`
 --
 ALTER TABLE `nacionalidad`
-  MODIFY `id_nacionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_nacionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

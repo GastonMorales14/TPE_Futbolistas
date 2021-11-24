@@ -38,19 +38,17 @@
                     <input type="submit" class="btn fondoHeder text-white w-25 mt-3 col-4" value="Modificar">
                 </div>
             </form>
-        </div>
-     {/if}
 
-    </div>
 
-    <h6 class="text-light">COMENTARIOS</h6>
+
+            <h6 class="text-light display-5 mt-5">COMENTARIOS</h6>
     
-    <form id="frm-comment" data-email={$email}>
-            <div class="input-row">
-                <textarea class="input-field" type="text" name="comment"
-                    id="comment" placeholder="Add a Comment">  </textarea>
-            </div>
-            <div id="valuation" class="valuation">
+            <form class="form-comments" id="frm-comment" data-email={$email}>
+                <div class="input-row">
+                    <textarea class="form-control" type="text" name="comment"
+                        id="comment" placeholder="Escriba un comentario">  </textarea>
+                </div>
+                <div id="valuation" class="valuation">
                 <input id="radio1" type="radio" name="stars" value="5">
                 <label for="radio1">★</label>
                 <input id="radio2" type="radio" name="stars" value="4">
@@ -64,16 +62,17 @@
             </div>
             <button id="btn-comment" type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
 
-        </form>
-     
+            </form>
+        </div>
+     {/if}
 
-
+    </div>
     <section id="commentSection" class="text-light" data-user={$role} data-player={$id}>
         {include file='templates/vue/comments.tpl'}
     </section>
 </div>
 
-<script src="js/comments.js"></script>
+<script src="Js/comments.js"></script>
 </body>
     
 {include file='templates/footer.tpl'}

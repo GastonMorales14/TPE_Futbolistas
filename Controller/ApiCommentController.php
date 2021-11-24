@@ -17,19 +17,18 @@ class ApiCommentController{
 
     function getComments(){
         $comments = $this->model->getComments();
-        return $this->view->response($comments, 200);//dar mas logica a esta parte
+        return $this->view->response($comments, 200);
+       
     }
 
+    //obtiene el POST y lo devuelve en formato JSON
     private function getBody() {
         $bodyString = file_get_contents("php://input");
         return json_decode($bodyString);
     }
 
     function addComment($params = null) {
-        // obtengo el body del request (json)
         $body = $this->getBody();
-
-        // TODO: VALIDACIONES -> 400 (Bad Request)
 
         $id = $this->model->addComment($body->email, $body->comment, $body->date, $body->player, $body->points, $body->date);
         if ($id != 0) {
@@ -38,7 +37,6 @@ class ApiCommentController{
             $this->view->response("No pudo publicarse el comentario", 500);
         }
     }
-
     
 
     function deleteComment($params = null) {
